@@ -177,7 +177,7 @@ cat >> /etc/nginx/sites-available/default << 'EOF'
         #       # With php7.0-cgi alone:
         #       fastcgi_pass 127.0.0.1:9000;
         #       # With php7.0-fpm:
-               fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+               fastcgi_pass unix:/run/php/php7.2-fpm.sock;
         }
 
     }
@@ -251,7 +251,7 @@ cat >> /etc/nginx/sites-available/default << 'EOF'
         #       # With php7.0-cgi alone:
         #       fastcgi_pass 127.0.0.1:9000;
         #       # With php7.0-fpm:
-               fastcgi_pass unix:/run/php/php7.0-fpm.sock;
+               fastcgi_pass unix:/run/php/php7.2-fpm.sock;
         }
 
     }

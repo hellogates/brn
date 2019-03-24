@@ -42,7 +42,7 @@ sudo -u $uid bash <<EOF
 ##################################
 sudo apt-get update
 
-sudo apt-get install  -y nginx php-fpm php-mysql  php-curl php-gd php-mbstring php-mcrypt php-xml php-xmlrpc 
+sudo apt-get install  -y nginx php-fpm php-mysql  php-curl php-gd php-mbstring php-xml php-xmlrpc 
 
 sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password password $mpass'
 
@@ -60,7 +60,7 @@ sudo chmod +x wp-cli.phar
 sudo mv wp-cli.phar /usr/local/bin/wp
 EOF
 
-sudo systemctl restart php7.0-fpm
+sudo systemctl restart php7.2-fpm
 
 ##############################
 ##############################
@@ -71,9 +71,9 @@ sudo systemctl reload nginx
 
 nginx -t
 
-sed -i 's/; max_input_vars\s*=.*/max_input_vars=5000/g' /etc/php/7.0/fpm/php.ini
-sed -i 's/; max_input_vars\s*=.*/max_input_vars=5000/g' /etc/php/7.0/cli/php.ini
-sudo systemctl restart php7.0-fpm
+sed -i 's/; max_input_vars\s*=.*/max_input_vars=5000/g' /etc/php/7.2/fpm/php.ini
+sed -i 's/; max_input_vars\s*=.*/max_input_vars=5000/g' /etc/php/7.2/cli/php.ini
+sudo systemctl restart php7.2-fpm
 
 
 sudo -u $uid bash <<EOF
@@ -264,7 +264,7 @@ sed -i '7i\	return 301 https://$server_name$request_uri;' /etc/nginx/sites-avail
 ###############################
 
 sudo systemctl reload nginx
-sudo systemctl restart php7.0-fpm
+sudo systemctl restart php7.2-fpm
 
 nginx -t
 
